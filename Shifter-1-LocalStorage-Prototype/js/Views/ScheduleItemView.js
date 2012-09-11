@@ -15,8 +15,6 @@ var ScheduleItemView = (function(Backbone, _){
            //if i'm not mistaken remove is a event that backbone propagates.
            //this.model.bind("remove", this.unrender);
            this.model.bind("destroyMe", function(){
-               console.log("in shechdle destory");
-               console.log(this.model);
                this.remove();
                this.unrender();
            }, this);
@@ -27,11 +25,29 @@ var ScheduleItemView = (function(Backbone, _){
            var html = [],
                start = this.model.get('startTime'),
                end = this.model.get('endTime');
-           html.push("<li>");
-           html.push(this.model.id + " <br />");
-           html.push((start.getMonth() + 1) + " / " + start.getDate() + " / "  + start.getFullYear() + " <br />");
-           html.push(start.getHours() +":" + start.getMinutes() + " - "  + end.getHours() +":" + end.getMinutes() + " <br />");
+           html.push("<li data-role='list-divider' role='heading' class='ui-li ui-li-divider ui-btn ui-bar-d ui-li-has-count ui-btn-hover-undefined ui-btn-up-undefined'> ");
+           html.push(start.toDateString());
+           html.push("<span class='ui-li-count ui-btn-up-c ui-btn-corner-all'>1 Shift To Trade</span></li>");
+           
+           html.push("<li><a href='#myScheduleDialog' data-transition='pop' data-rel='dialog'>");
+           html.push("<h3>SHIFT ASSIGNED</h3>");
+           html.push("<p><strong>"+this.model.get('shiftPosition')+"</strong></p>");
+           html.push("<p class='ui-li-aside'><strong>" + start.getHours() +":" + start.getMinutes() + " - "  + end.getHours() +":" + end.getMinutes() + "</strong></p>");
+           html.push("</a></li>");
+           
+           /*
+           html.push("<li data-theme='a' class='ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-a '>");
+           html.push("<div class='ui-btn-inner ui-li'");
+           html.push("<div class='ui-btn-text'>");
+           html.push("<a href='#myScheduleDialog' data-transition='pop' data-rel='dialog'>");
+           html.push("<h3>SHIFT ASSIGNED</h3>");
+           html.push("<p><strong>"+this.model.get('shiftPosition')+"</strong></p>");
+           html.push("<p class='ui-li-aside'><strong>" + start.getHours() +":" + start.getMinutes() + " - "  + end.getHours() +":" + end.getMinutes() + "</strong></p>");
+           html.push("</a>");
+           html.push("</div>");
+           html.push("</div>");
            html.push("</li>");
+           */
            this.$el.append(html.join(""));
            return this; //here for chainabe calls
        },
@@ -43,14 +59,17 @@ var ScheduleItemView = (function(Backbone, _){
        },
        showDialog: function(){
            //removes any current click handlers on the button. (causes errors atm.)
-           $("#acceptShiftDialog").off("click");
-           $("#acceptScheduleDialog").off("click");
-           $("#acceptScheduleDialog").on("click",{ model: this.model}, function(event){
-               shiftStore.create(event.data.model);
+           $("#acceptTrade").off("click");
+           $("#submitToBulletin").off("click");
+           
+           
+           $("#submitToBulletin").on("click",{ model: this.model}, function(event){
+               //create it in the oppisite store.
+               shiftStore.create(event.data.model); //note shift = bulletin. need... to change that as well.
                event.data.model.trigger('destroyMe');
-               $("#scheduleDialog").dialog('close');
+               $("#myScheduleDialog").dialog('close');
            });
-           $.mobile.changePage("#scheduleDialog");
+           $.mobile.changePage("#myScheduleDialog");
        }
     });
 })(Backbone, _);

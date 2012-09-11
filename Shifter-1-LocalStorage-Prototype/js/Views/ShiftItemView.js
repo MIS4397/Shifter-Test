@@ -15,7 +15,6 @@ var ShiftItemView = (function(Backbone, _){
            //if i'm not mistaken remove is a event that backbone propagates.
            //this.model.bind("remove", this.unrender);
            this.model.bind("destroyMe", function(){
-               console.log(this.model);
                this.remove();
                this.unrender();
            }, this);
@@ -26,11 +25,12 @@ var ShiftItemView = (function(Backbone, _){
            var html = [],
                start = this.model.get('startTime'),
                end = this.model.get('endTime');
-           html.push("<li>");
-           html.push(this.model.id + " <br />");
-           html.push((start.getMonth() + 1) + " / " + start.getDate() + " / "  + start.getFullYear() + " <br />");
-           html.push(start.getHours() +":" + start.getMinutes() + " - "  + end.getHours() +":" + end.getMinutes() + " <br />");
-           html.push("</li>");
+               html.push("<li><a href='' data-rel='dialog' data-transition='pop'>");
+               html.push("<h3>"+start.toDateString()+"</h3>");
+               html.push("<p><strong>"+this.model.get('shiftPosition')+"</strong></p>");
+               html.push("<p>"+this.model.get('lastName')+","+this.model.get('firstName')+"</p>");
+               html.push("<p class='ui-li-aside'><strong>" + start.getHours() +":" + start.getMinutes() + " - "  + end.getHours() +":" + end.getMinutes() + "</strong></p>");
+               html.push("</a></li>");
            this.$el.append(html.join(""));
            return this; //here for chainabe calls
        },
@@ -42,16 +42,17 @@ var ShiftItemView = (function(Backbone, _){
        },
        showDialog: function(){
             //removes any current click handlers on the button. (causes errors atm.)
-           $("#acceptShiftDialog").off("click");
-           $("#acceptScheduleDialog").off("click");
-           $("#acceptShiftDialog").on("click",{ model: this.model}, function(event){
+           $("#acceptTrade").off("click");
+           $("#submitToBulletin").off("click");
+           
+           
+           $("#acceptTrade").on("click",{ model: this.model}, function(event){
                //WARNING GLOBAL VARIABLES
                scheduleStore.create(event.data.model);
                event.data.model.trigger('destroyMe');
-               $("#acceptShiftDialog").off("click");
-               $("#shiftDialog").dialog('close');
+               $("#bulletinBoardDialog").dialog('close');
            });
-           $.mobile.changePage("#shiftDialog");
+           $.mobile.changePage("#bulletinBoardDialog");
        }
     });
 })(Backbone, _);

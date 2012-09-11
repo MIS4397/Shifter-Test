@@ -3,9 +3,6 @@ var Shift = (function(Backbone){
     return Backbone.Model.extend({
         defaults:{
             name: "Default Name",
-            firstName: "First",
-            lastName: "Last",
-            shiftPosition:"position String",
             startTime: new Date(2000, 0, 1, 0, 0),
             endTime: new Date(2000, 1, 2, 1, 1)
         },

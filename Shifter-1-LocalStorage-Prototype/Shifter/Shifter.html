@@ -25,7 +25,7 @@
 				<div data-role="navbar">
 					<ul>
 						<li><a href="#shiftPage">Shifts</a></li>
-						<li><a href="#schedulePage">NO man left alive </a></li>
+						<li><a href="#schedulePage">Schedules </a></li>
 						<li><a href="#simulatorPage">Simulator</a></li>
 					</ul>
 				</div>
@@ -40,8 +40,7 @@
 			</div><!-- header -->
 			
 			<div data-role="content">
-				<ul data-role="listview" id="scheduleList">			
-					<!-- this will have scripts filled this out -->		
+				<ul data-role="listview" id="scheduleList">					
 				</ul>
 			</div><!-- Content -->
 			<!-- data-id is a jquery mobile tag, used to indicate these footers are the same -->
@@ -57,30 +56,6 @@
 		</div><!-- shifts page -->
 <!--End Schedule Page -->
 
-<div data-role="dialog" id="shiftDialog">
-	<div data-role="header"> 
-				<h1>you selected List</h1>
-			</div><!-- header -->
-			
-			<div data-role="content">
-				Hello Dialog
-				<a href data-role="button" data-rel="back" id="acceptShiftDialog">Accept</a>
-				<a href data-role="button" data-rel="back">Cancel</a>
-			</div><!-- Content -->
-</div>
-
-
-<div data-role="dialog" id="scheduleDialog">
-	<div data-role="header"> 
-				<h1>you selected List</h1>
-			</div><!-- header -->
-			
-			<div data-role="content">
-				Hello Dialog
-				<a href data-role="button" data-rel="back" id="acceptScheduleDialog">Accept</a>
-				<a href data-role="button" data-rel="back">Cancel</a>
-			</div><!-- Content -->
-</div>
 
 <!--simulator Page -->
 		<div data-role="page" id="simulatorPage">
@@ -129,7 +104,6 @@
       			try {
         			localStorage.setItem(mod, mod);
         			localStorage.removeItem(mod);
-        			document.getElementById("warnings").innerHTML = "localStorage was found.";
         			return true;
       			}	 catch(e) {
       				console.log("caught exception "+e)
@@ -142,12 +116,9 @@
 		<script type="text/javascript" src="js/libs/Backbone.localStorage.js"></script>
 		
 		<script type="text/javascript" src="js/ModelsAndCollections/ShiftCollectionAndModel.js"></script>
-		<script type="text/javascript" src="js/Views/CollectionView.js"></script>
 		<script type="text/javascript" src="js/Views/ScheduleView.js"></script>
 		<script type="text/javascript" src="js/Views/SimulatorsView.js"></script>
 		<script type="text/javascript" src="js/Views/ShiftView.js"></script>
-		<script type="text/javascript" src="js/Views/ShiftItemView.js"></script>
-		<script type="text/javascript" src="js/Views/ScheduleItemView.js"></script>
 		<script type="text/javascript" src="js/ShifterMain.js"></script>
 		
 	</body>

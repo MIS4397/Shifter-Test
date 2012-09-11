@@ -101,7 +101,9 @@ return  Backbone.View.extend({
            if(this.firstLoad){
                this.firstLoad = false;
            }else{
-               this.$el.listview('refresh');    //tells jquery mobile to refresh the page
+               this.$el.listview('refresh', true);    //tells jquery mobile to refresh the page
+              // this.$el.trigger('create');
+               this.$el.trigger('updatelayout');
            }
         },
         unrender: function(){
