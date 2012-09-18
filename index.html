@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html manifest="shifter.manifest">
+
+<head>
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+    <!-- START NATIVE APP RENDER -->
+    <!-- THIS IS THE CODE THAT WHEN THIS FILE IS SAVED TO AN iOS HOME SCREEN FORCES THE ICON 
+    	AND STARTUP IMAGE TO APPEAR AS WELL AS OMITTING ANY BROWSER PANELS -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <link rel="apple-touch-icon" href="images/shifter_icon.png"/>
+    <link rel="apple-touch-startup-image" href="images/photo2.png" />
+    <!-- END NATIVE APP RENDER -->
+    <link rel="stylesheet" href="css/shifter.css" type="text/css" media="screen, mobile" title="main" charset="utf-8">
+    <link rel="stylesheet" href="css/jquery.mobile.structure-1.0.1.min.css" />
+
+    
+	
+    <title>Shifter</title>
+</head>
+
+<body>
+<!-- index -->
+	<div data-role="page" data-theme="a" id="index">
+			<div data-role="content" data-theme="a">
+				<div data-role="fieldcontain" align="center">
+				    <fieldset data-role="controlgroup">
+						<li data-swatch="a" class="ui-li ui-li-divider ui-btn ui-bar-a ui-corner-top" data-role="list-divider" role="" data-form="ui-bar-a">Login</li>
+							<li><p><input type="text" style="color:#000000;" placeholder="Username" onclick="this.value='';this.onclick='';this.style.color='#000';" /></li>
+							<li><p><input type="password" style="color:#000000;" placeholder="Password" onclick="this.value='';this.onclick='';this.style.color='#000';" /></li>
+							<li><a href="#termsAndConditions" data-role="button"data-theme="a">Login</a></li>
+							<li><a href="#forgotPassword" data-role="button"data-theme="a">Forgot Password?</a></li>
+				    </fieldset>
+				</div>
+					<p><a href="#accountSetup" data-role="button"data-theme="a">Don't have an account?</a></p>
+			</div><!-- /content -->
+	</div><!-- /page -->
+<!-- /index -->
+<!-- Terms and Conditions -->
+	<div data-role="page" data-theme="a"  id="termsAndConditions">
+		<div data-role="header" data-position="inline">
+			<h3>Day Trade Terms and Conditions</h3>
+		</div><!-- /header -->
+			<div data-role="content" data-theme="a">
+			<b>Choosing the "Accept Terms" option below holds you bound to the Day Trade Terms and Conditions as specified below as well as to the Fly To Win Day and Shift Trade Guidelines for all day trade actions performed in this session. Choosing the "Do Not Accept Terms" option below returns you to the eTA Main Menu.</b>
+			<h3>Trade Limits</h3>
+			It is the original shift holder's responsibility to:
+				<ol>
+			 		<li>Limit the amount of trades posted for a single shift.</li>
+			  		<li>Ensure the shift is traded off only once.</li>
+			  		<li>Remove any multiple postings and overlapping trades once a shift has been accepted.</li>
+			  	</ol>
+			<h3>Day Trade Terms of Use</h3>
+				<ol>
+					<li>The qualified team member who signs a shift or day trade form stating that he or she agrees to work the indicated shift becomes responsible to work the shift or day trade hours identified. Station leadership is not required.</li>
+					<li>An agreed upon shift or day trade can only be canceled after signatures from all involved parties are obtained.</li>
+					<li>A team member accepting the shift or day trade will clock/swipe in or date his/her time card and receive his/her hourly straight time wage for the trade hours worked, except for company-recognized holidays as referenced in Paragraph B-10.</li>
+					<li>A team member on a Day Trade Off (DTO) cannot work voluntary overtime during their regular scheduled hours.</li>
+					<li>Verbal trades are not permitted.</li>
+				</ol>
+			<h3>Inappropriate Activities That May Lead to Corrective Actions </h3>
+				<ol>
+					<li>The team member accepting the trade fails to show up or call prior to the shift.</h1>
+					<li>Unacceptable level of attendance.</h1>
+					<li>Submitting or accepting a trade that is not valid or in compliance with Fly to Win guidelines.</h1>
+				</ol>
+			<h3>Corrective Actions </h3>
+			1st Occurrence - Team member will have a documented verbal counseling.<br>
+			2nd Occurrence - Team member will receive a written warning letter and a 30 day suspension of Shift/Day trade privileges.<br>
+			3rd Occurrence - Team member will receive a termination warning letter and a 60 day suspension of Shift/Day trade privileges.<br>
+			4th Occurrence - Team member will be terminated.
+					<p><a href="#mySchedule" data-role="button"data-theme="a">Accept</a>
+					<a href="#index" data-transition="flip" data-role="button" data-theme="a">Do Not Accept Terms</a></p>
+			</div><!-- /content -->
+	</div><!-- /page -->
+<!-- /Terms and Conditions -->
+<!------------------------------------------------- MAIN PAGES ------------------------------------------------------------>
+<!------------------------------------------------- MAIN PAGES ------------------------------------------------------------>
+<!------------------------------------------------- MAIN PAGES ------------------------------------------------------------>
+
+<!-- trade infractions -->
+<div data-role="page" data-theme="a" id="tradeInfraction">
+	<div data-role="header" data-position="inline">
+		<h1>Trade Infractions</h1>
+	</div><!-- /header -->
+	<div data-role="content" data-theme="a" id="simulatorContent">
+		This Should contain Trade Infractions or something. But it doesn't.
+		<div id="warnings"></div>
+		<h3>Schedule Panel</h3>
+		<div id="scheduleSimulatorPanel">
+			<button id="generateSchedule">Generate Schedule</button>
+			<button id="killScheduleStore">Kill Schedule Storage</button>
+		</div>
+		<h3>Shift Panel</h3>
+		<div id="shiftSimulatorPanel">
+			<button id="generateShifts">Generate Shifts</button>
+			<button id="killShiftStore">Kill Shift Storage</button>
+		</div>
+	</div><!-- /content -->	
+	<div data-role="footer" data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#mySchedule" data-icon="grid"><font size="1">My<br>Schedule</font></a></li>
+				<li><a href="#tradeInfraction" class="ui-btn-active ui-state-persist" data-icon="alert"><font size="1">Trade<br>Infractions</font></a></li>
+				<li><a href="#submitTrades" data-icon="arrow-u"><font size="1">Submit<br>Trades</font></a></li>
+				<li><a href="#bulletinBoard" data-icon="search"><font size="1">Bulletin<br>Board</font></a></li>
+				<li><a href="#tradeStatus" data-icon="info"><font size="1">Trade<br>Status</font></a></li>
+			</ul>
+		</div><!-- /navbar -->
+	</div><!-- /footer -->
+</div><!-- /page -->
+	
+<!-- trade infractions -->
+<!-- submitTrades -->
+<div data-role="page" data-theme="a" data-inset="true" id="submitTrades">
+		<div data-role="header" data-position="inline">
+			<h1>Submit Trades</h1>
+		</div><!-- /header -->
+		
+			<div data-role="content" data-theme="a">
+				<ul data-role="listview" data-inset="true" >
+	         		<li>
+	         		Employee Information
+	         		<div data-role="fieldcontain">
+	         			<label for="empid">Employee ID:</label><input type="text" name="empid" id="empid" value="" placeholder="enter employee id number" />
+						<label for="lname">Last Name:</label><input type="text" name="lname" id="lname" value="" placeholder="last name" />
+						<label for="fname">First Name:</label><input type="text" name="fname" id="fname" value="" placeholder="first name" />
+	         			<label for="date">Date:</label><input type="date" name="date" id="date" value="YYYY-MM-DD"/>
+	         			<label for="btime">Beginning Time (24 hour):</label><input type="time" name="btime" id="btime" value="##:## 24 Hour Clock"/>
+	         			<label for="etime">Ending Time (24 hour):</label><input type="time" name="etime" id="etime" value="##:## 24 Hour Clock"/><p>
+	         		</div>
+	        		</li>
+	         	</ul>
+	         	<p><input type="submit" name="submit" id="submit" value="SUBMIT"</p>
+	         	<!--This SUBMIT button should either take me to the bulletin board to show the submitted shift or give me a a response saying submission successful.-->
+			</div>
+			
+		<div data-role="footer" data-position="fixed">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#mySchedule" data-icon="grid"><font size="1">My<br>Schedule</font></a></li>
+					<li><a href="#tradeInfraction" data-icon="alert"><font size="1">Trade<br>Infractions</font></a></li>
+					<li><a href="#submitTrades" class="ui-btn-active ui-state-persist" data-icon="arrow-u"><font size="1">Submit<br>Trades</font></a></li>
+					<li><a href="#bulletinBoard" data-icon="search"><font size="1">Bulletin<br>Board</font></a></li>
+					<li><a href="#tradeStatus" data-icon="info"><font size="1">Trade<br>Status</font></a></li>
+				</ul>
+			</div><!-- /navbar -->
+		</div><!-- /footer -->
+</div><!-- /page -->
+<!-- submitTrades -->
+<!-- tradeStatus -->
+<div data-role="page" data-theme="a" id="tradeStatus">
+		<div data-role="header" data-position="inline">
+			<h1>Trade Status</h1>
+		</div><!-- /header -->
+		
+		<div data-role="content" data-theme="a"><p>
+				<ul data-role="listview" data-inset="false">
+					<li data-role="list-divider" role="heading" class="ui-li ui-li-divider ui-btn ui-bar-d ui-li-has-count ui-btn-hover-undefined ui-btn-up-undefined" data-filter="true">Saturday, April 28, 2012 </li>
+						<li><a href="pickup_dialog.html" data-rel="dialog" data-transition="pop">
+							<h3>SAT ON</h3>
+							<p><strong>IAH 415 Ramp Onlines</strong></p>
+							<p>Sanhouidi, Lionel P. - T6547</p>
+							<p class="ui-li-aside"><strong>14:30 - 21:00</strong></p>
+						</a></li>
+					</li>
+					<li data-role="list-divider" role="heading" class="ui-li ui-li-divider ui-btn ui-bar-d ui-li-has-count ui-btn-hover-undefined ui-btn-up-undefined" data-filter="true">Sunday, April 29, 2012 </li>
+						<li><a href="pickup_dialog.html" data-rel="dialog" data-transition="pop">
+							<h3>SUN ON</h3>
+							<p><strong>IAH 415 Ramp CX Onlines</strong></p>
+							<p>To, Hoang-Long - P0045</p>
+							<p class="ui-li-aside"><strong>17:15 - 21:15</strong></p>
+						</a></li>
+					</li>
+				</ul>
+			</div><!-- /content -->
+			
+		<div data-role="footer" data-position="fixed">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#mySchedule" data-icon="grid"><font size="1">My<br>Schedule</font></a></li>
+					<li><a href="#tradeInfraction" data-icon="alert"><font size="1">Trade<br>Infractions</font></a></li>
+					<li><a href="#submitTrades" data-icon="arrow-u"><font size="1">Submit<br>Trades</font></a></li>
+					<li><a href="#bulletinBoard" data-icon="search"><font size="1">Bulletin<br>Board</font></a></li>
+					<li><a href="#tradeStatus" class="ui-btn-active ui-state-persist" data-icon="info"><font size="1">Trade<br>Status</font></a></li>
+				</ul>
+			</div><!-- /navbar -->
+		</div><!-- /footer -->
+		
+</div><!-- /page -->
+<!-- /tradeStatus -->
+<!-- mySchedule -->
+<div data-role="page" data-theme="a" id="mySchedule">
+		<div data-role="header" data-position="inline">
+			<h1>My Schedule</h1>
+		</div><!-- /header -->
+			<div data-role="content" data-theme="a">
+				<ul data-role="listview" data-inset="true" id="scheduleList">
+				</ul>
+			</div><!-- /content -->
+			
+		<div data-role="footer" data-position="fixed">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#mySchedule" class="ui-btn-active ui-state-persist" data-icon="grid"><font size="1">My<br>Schedule</font></a></li>
+					<li><a href="#tradeInfraction" data-icon="alert"><font size="1">Trade<br>Infractions</font></a></li>
+					<li><a href="#submitTrades" data-icon="arrow-u"><font size="1">Submit<br>Trades</font></a></li>
+					<li><a href="#bulletinBoard" data-icon="search"><font size="1">Bulletin<br>Board</font></a></li>
+					<li><a href="#tradeStatus" data-icon="info"><font size="1">Trade<br>Status</font></a></li>
+				</ul>
+			</div><!-- /navbar -->
+		</div><!-- /footer -->
+</div><!-- /page -->
+<!-- /myschedule -->
+<!-- bullietinBoard -->
+<div data-role="page" data-theme="a" id="bulletinBoard">
+
+		<div data-role="header" data-position="inline">
+			<h1>Bulletin Board</h1>
+		</div><!-- /header -->
+
+			<div data-role="content" data-theme="a">
+				<ul data-role="listview" data-inset="true" id="bulletinList">					
+
+				</ul>
+			</div><!-- /content -->
+
+		<div data-role="footer" data-position="fixed">
+			<div data-role="navbar">
+			<ul>
+				<li><a href="#mySchedule" data-role="button" data-icon="grid"><font size="1">My<br>Schedule</font></a></li>
+				<li><a href="#tradeInfraction" data-icon="alert"><font size="1">Trade<br>Infractions</font></a></li>
+				<li><a href="#submitTrades" data-icon="arrow-u"><font size="1">Submit<br>Trades</font></a></li>
+				<li><a href="#bulletinBoard" class="ui-btn-active ui-state-persist" data-icon="search"><font size="1">Bulletin<br>Board</font></a></li>
+				<li><a href="#tradeStatus" data-icon="info"><font size="1">Trade<br>Status</font></a></li>
+			</ul>
+			</div><!-- /navbar -->
+		</div><!-- /footer -->
+
+	</div><!-- /page -->
+
+<!-- ----------------------------------------------------DIALOG-------S------------------------------------------>
+<div data-role="dialog" data-theme="a" id="myScheduleDialog">
+	<div data-role="header" data-position="inline">
+		<h1>My Schedule</h1>
+	</div><!-- /header -->
+	
+	<div data-role="content" data-theme="a"><p>
+		<ul data-role="listview" data-inset="true">
+			<li>
+				<a href data-role="button" data-rel="back" id="submitToBulletin"><h3>SUBMIT to Bulletin Board?</h3></a>
+				
+			</li>
+			<li>
+			<!--	<a href="submittrades.html"><h3>Send to Coworker?</h3></a> -->
+				<a href data-role="button" data-rel="back" >Cancel</a>
+		   </li>
+		</ul>
+	</div><!-- /content -->
+</div><!-- /page -->
+
+<div data-role="dialog" data-theme="a" id="bulletinBoardDialog">
+
+	<div data-role="header" data-position="inline">
+		<h1>Are You Sure</h1>
+	</div><!-- /header -->
+
+	<div data-role="content" data-theme="a">
+		<br />
+		<ul data-role="listview" data-inset="true">
+			<li>
+				<a href data-role="button" data-rel="back" id="acceptTrade"><h3>ACCEPT</h3></a>
+			</li>
+			<li>
+				<a href data-role="button" data-transition="flip" data-rel="back" data-theme="a" >Cancel</a>
+			</li>
+		</ul>
+	</div><!-- /content -->
+
+</div><!-- /page -->
+
+<!-- ------------- SCRIPTS ------------->
+
+		<script src="js/libs/jquery-1.7.1.min.js"></script>
+	<script src="js/libs/jquery.mobile-1.0.1.min.js"></script>
+
+
+		<script type="text/javascript" src="js/libs/underscore.js"></script>
+		<script type="text/javascript" src="js/libs/backbone.js"></script>
+		<script type="text/javascript">
+			var hasStorage = (function() {
+				var mod = "test";
+      			try {
+        			localStorage.setItem(mod, mod);
+        			localStorage.removeItem(mod);
+        			document.getElementById("warnings").innerHTML = "localStorage was found.";
+        			return true;
+      			}	 catch(e) {
+      				console.log("caught exception "+e)
+      				document.getElementById("warnings").innerHTML = "localStorage was not found. Generating Schedules and shifts won't work.";
+        			return false;
+      			}
+    		}());
+		</script>
+		
+		<script type="text/javascript" src="js/libs/Backbone.localStorage.js"></script>
+		
+		<script type="text/javascript" src="js/ModelsAndCollections/ShiftCollectionAndModel.js"></script>
+		<script type="text/javascript" src="js/Views/CollectionView.js"></script>
+		<script type="text/javascript" src="js/Views/ScheduleView.js"></script>
+		<script type="text/javascript" src="js/Views/SimulatorsView.js"></script>
+		<script type="text/javascript" src="js/Views/ShiftView.js"></script>
+		<script type="text/javascript" src="js/Views/ShiftItemView.js"></script>
+		<script type="text/javascript" src="js/Views/ScheduleItemView.js"></script>
+		<script type="text/javascript" src="js/ShifterMain.js"></script>
+
+</body>
+</html>
+
+

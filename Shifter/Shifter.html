@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" />
+	</head>
+	<body>
+		
+<!--shifts Page -->
+		<div data-role="page" id="shiftPage">
+			<div data-role="header"> 
+				<h1>Shift List</h1>
+			</div><!-- header -->
+			
+			<div data-role="content">
+				<div>
+					<ul data-role="listview" id="shiftList">					
+					</ul>
+				</div>
+			</div><!-- Content -->
+			<!-- data-id is a jquery mobile tag, used to indicate these footers are the same -->
+			<div data-role="footer" data-position="fixed" data-id="footer">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#shiftPage">Shifts</a></li>
+						<li><a href="#schedulePage">Schedules </a></li>
+						<li><a href="#simulatorPage">Simulator</a></li>
+					</ul>
+				</div>
+			</div><!-- footer -->
+		</div><!-- shifts page -->
+<!--End shifts Page -->
+
+<!--Schedule Page -->
+		<div data-role="page" id="schedulePage">
+			<div data-role="header"> 
+				<h1>Schedule List</h1>
+			</div><!-- header -->
+			
+			<div data-role="content">
+				<ul data-role="listview" id="scheduleList">					
+				</ul>
+			</div><!-- Content -->
+			<!-- data-id is a jquery mobile tag, used to indicate these footers are the same -->
+			<div data-role="footer" data-position="fixed" data-id="footer">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#shiftPage">Shifts</a></li>
+						<li><a href="#schedulePage">Schedules </a></li>
+						<li><a href="#simulatorPage">Simulator</a></li>
+					</ul>
+				</div>
+			</div><!-- footer -->
+		</div><!-- shifts page -->
+<!--End Schedule Page -->
+
+
+<!--simulator Page -->
+		<div data-role="page" id="simulatorPage">
+			<div data-role="header"> 
+				<h1>Simulator Page</h1>
+			</div><!-- header -->
+			
+			<div data-role="content" id="simulatorContent">
+				
+				<div id="warnings"></div>
+				<h3>Schedule Panel</h3>
+				<div id="scheduleSimulatorPanel">
+					<button id="generateSchedule">Generate Schedule</button>
+					<button id="killScheduleStore">Kill Schedule Storage</button>
+				</div>
+				<h3>Shift Panel</h3>
+				<div id="shiftSimulatorPanel">
+					<button id="generateShifts">Generate Shifts</button>
+					<button id="killShiftStore">Kill Shift Storage</button>
+				</div>
+				<button id="addShift">Add Shift</button>
+			</div><!-- Content -->
+			
+			<div data-role="footer" data-position="fixed" data-id="footer">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#shiftPage">Shifts</a></li>
+						<li><a href="#schedulePage">Schedules </a></li>
+						<li><a href="#simulatorPage">Simulator</a></li>
+					</ul>
+				</div>
+			</div><!-- footer -->
+		</div><!-- simulator page -->
+<!--End simulator Page -->
+
+	<!-- for offline testing direct these files to your libs/ folder -->
+		<script type="text/javascript" src="js/libs/jquery-1.7.1.min.js"></script>
+		<script type="text/javascript" src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
+		
+		<script type="text/javascript" src="js/libs/underscore.js"></script>
+		<script type="text/javascript" src="js/libs/backbone.js"></script>
+		
+		<script type="text/javascript">
+			var hasStorage = (function() {
+				var mod = "test";
+      			try {
+        			localStorage.setItem(mod, mod);
+        			localStorage.removeItem(mod);
+        			return true;
+      			}	 catch(e) {
+      				console.log("caught exception "+e)
+      				document.getElementById("warnings").innerHTML = "localStorage was not found. Generating Schedules and shifts won't work.";
+        			return false;
+      			}
+    		}());
+		</script>
+		
+		<script type="text/javascript" src="js/libs/Backbone.localStorage.js"></script>
+		
+		<script type="text/javascript" src="js/ModelsAndCollections/ShiftCollectionAndModel.js"></script>
+		<script type="text/javascript" src="js/Views/ScheduleView.js"></script>
+		<script type="text/javascript" src="js/Views/SimulatorsView.js"></script>
+		<script type="text/javascript" src="js/Views/ShiftView.js"></script>
+		<script type="text/javascript" src="js/ShifterMain.js"></script>
+		
+	</body>
+</html>
